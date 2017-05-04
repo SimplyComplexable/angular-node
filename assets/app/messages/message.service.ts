@@ -11,6 +11,9 @@ export class MessageService {
     private messages: Message[] = [];
     messageIsEdit = new EventEmitter<Message>();
 
+    rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
+    // rootUrl: string = 'http://localhost:3000/';
+
     constructor(private http: Http, private errorService: ErrorService) {}
 
     addMessage(message: Message) {
@@ -19,7 +22,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
             ?  '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/message' + token, body, { headers })
+        return this.http.post(this.rootUrl + 'message' + token, body, { headers })
             .map((response: Response) => {
                 const result = response.json();
                 const message =  new Message(result.obj.content, result.obj.user.firstName, result.obj._id, result.obj.user._id);
@@ -33,7 +36,7 @@ export class MessageService {
     }
 
     getMessages() {
-        return this.http.get('http://localhost:3000/message')
+        return this.http.get(this.rootUrl + 'message')
             .map((response: Response) => {
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
@@ -66,7 +69,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
             ?  '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.patch('http://localhost:3000/message/' + message.messageId + token, body, {headers})
+        return this.http.patch(this.rootUrl + 'message/' + message.messageId + token, body, {headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -79,7 +82,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
             ?  '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
+        return this.http.delete(this.rootUrl + 'message/' + message.messageId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());

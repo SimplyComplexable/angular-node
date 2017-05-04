@@ -7,13 +7,15 @@ import {ErrorService} from "../error/error.service";
 
 @Injectable()
 export class AuthService {
+    rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
+    // rootUrl: string = 'http://localhost:3000/';
 
     constructor(private http: Http, private errorService: ErrorService) { }
 
     signUp(user: User) {
         const body = JSON.stringify(user);
         const headers =  new Headers({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/user', body, {headers})
+        return this.http.post(this.rootUrl + 'user', body, {headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -24,7 +26,7 @@ export class AuthService {
     signIn(user: User) {
         const body = JSON.stringify(user);
         const headers =  new Headers({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/user/signin', body, {headers})
+        return this.http.post(this.rootUrl + 'user/signin', body, {headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
