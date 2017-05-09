@@ -618,6 +618,7 @@ var AppModuleInjector = (function (_super) {
     AppModuleInjector.prototype.destroyInternal = function () {
         this._ɵf_6.ngOnDestroy();
         (this.__ɵDomSharedStylesHost_36 && this._ɵDomSharedStylesHost_36.ngOnDestroy());
+        (this.__MessageService_51 && this._MessageService_51.ngOnDestroy());
         (this.__RouterPreloader_55 && this._RouterPreloader_55.ngOnDestroy());
     };
     return AppModuleInjector;

@@ -8,7 +8,7 @@ import * as import0 from '@angular/core';
 import * as import1 from '@angular/common';
 import * as import2 from './message.component';
 import * as import3 from './message.service';
-var styles_MessageComponent = ['.author[_ngcontent-%COMP%] {\n            display: inline-block;;\n            font-style: italic;\n            font-size: 12px;\n            width: 80%;\n        }\n        .config[_ngcontent-%COMP%] {\n            display: inline-block;\n            text-align: right;\n            font-size: 12px;\n            width: 19%;\n        }'];
+var styles_MessageComponent = ['.author[_ngcontent-%COMP%] {\n            display: inline-block;;\n            font-style: italic;\n            font-size: 12px;\n            width: 80%;\n        }\n        .config[_ngcontent-%COMP%] {\n            display: inline-block;\n            text-align: right;\n            font-size: 12px;\n            width: 19%;\n        }\n        .panel[_ngcontent-%COMP%] {\n            width: 75%;\n        }\n        .my-message-body[_ngcontent-%COMP%] {\n            margin-left: 25%;\n        }'];
 export var RenderType_MessageComponent = import0.ɵcrt({
     encapsulation: 0,
     styles: styles_MessageComponent,
@@ -56,11 +56,12 @@ function View_MessageComponent_1(l) {
 }
 export function View_MessageComponent_0(l) {
     return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 13, 'article', [[
-                'class',
-                'panel panel-default'
+        (l()(), import0.ɵeld(0, null, null, 13, 'article', [], [[
+                8,
+                'className',
+                0
             ]
-        ], null, null, null, null, null)),
+        ], null, null, null, null)),
         (l()(), import0.ɵted(null, ['\n    '])),
         (l()(), import0.ɵeld(0, null, null, 1, 'div', [[
                 'class',
@@ -101,14 +102,16 @@ export function View_MessageComponent_0(l) {
         (l()(), import0.ɵted(null, ['\n']))
     ], function (ck, v) {
         var co = v.component;
-        var currVal_2 = co.belongsToUser();
-        ck(v, 11, 0, currVal_2);
+        var currVal_3 = co.belongsToUser();
+        ck(v, 11, 0, currVal_3);
     }, function (ck, v) {
         var co = v.component;
-        var currVal_0 = co.message.content;
-        ck(v, 3, 0, currVal_0);
-        var currVal_1 = co.message.username;
-        ck(v, 8, 0, currVal_1);
+        var currVal_0 = ((co.belongsToUser() ? 'my-message-body ' : '') + 'panel panel-default');
+        ck(v, 0, 0, currVal_0);
+        var currVal_1 = co.message.content;
+        ck(v, 3, 0, currVal_1);
+        var currVal_2 = co.message.username;
+        ck(v, 8, 0, currVal_2);
     });
 }
 function View_MessageComponent_Host_0(l) {

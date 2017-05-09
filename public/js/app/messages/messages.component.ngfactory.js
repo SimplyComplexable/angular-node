@@ -5,11 +5,11 @@
  */
 /* tslint:disable */
 import * as import0 from '@angular/core';
-import * as import1 from './message-input.component.ngfactory';
-import * as import2 from './message-input.component';
+import * as import1 from './message-list.component.ngfactory';
+import * as import2 from './message-list.component';
 import * as import3 from './message.service';
-import * as import4 from './message-list.component.ngfactory';
-import * as import5 from './message-list.component';
+import * as import4 from './message-input.component.ngfactory';
+import * as import5 from './message-input.component';
 import * as import6 from './messages.component';
 var styles_MessagesComponent = [];
 export var RenderType_MessagesComponent = import0.ɵcrt({
@@ -32,8 +32,8 @@ export function View_MessagesComponent_0(l) {
             ]
         ], null, null, null, null, null)),
         (l()(), import0.ɵted(null, ['\n                '])),
-        (l()(), import0.ɵeld(0, null, null, 1, 'app-message-input', [], null, null, null, import1.View_MessageInputComponent_0, import1.RenderType_MessageInputComponent)),
-        import0.ɵdid(57344, null, 0, import2.MessageInputComponent, [import3.MessageService], null, null),
+        (l()(), import0.ɵeld(0, null, null, 1, 'app-message-list', [], null, null, null, import1.View_MessageListComponent_0, import1.RenderType_MessageListComponent)),
+        import0.ɵdid(4251648, null, 0, import2.MessageListComponent, [import3.MessageService], null, null),
         (l()(), import0.ɵted(null, ['\n            '])),
         (l()(), import0.ɵted(null, ['\n            '])),
         (l()(), import0.ɵeld(0, null, null, 0, 'hr', [], null, null, null, null, null)),
@@ -44,8 +44,8 @@ export function View_MessagesComponent_0(l) {
             ]
         ], null, null, null, null, null)),
         (l()(), import0.ɵted(null, ['\n                '])),
-        (l()(), import0.ɵeld(0, null, null, 1, 'app-message-list', [], null, null, null, import4.View_MessageListComponent_0, import4.RenderType_MessageListComponent)),
-        import0.ɵdid(57344, null, 0, import5.MessageListComponent, [import3.MessageService], null, null),
+        (l()(), import0.ɵeld(0, null, null, 1, 'app-message-input', [], null, null, null, import4.View_MessageInputComponent_0, import4.RenderType_MessageInputComponent)),
+        import0.ɵdid(57344, null, 0, import5.MessageInputComponent, [import3.MessageService], null, null),
         (l()(), import0.ɵted(null, ['\n            '])),
         (l()(), import0.ɵted(null, ['\n        '])),
         (l()(), import0.ɵted(null, ['\n    ']))

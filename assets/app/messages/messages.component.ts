@@ -5,11 +5,11 @@ import {Component} from "@angular/core";
     template: `
         <div class="container">
             <div class="row">
-                <app-message-input></app-message-input>
+                <app-message-list></app-message-list>
             </div>
             <hr>
             <div class="row">
-                <app-message-list></app-message-list>
+                <app-message-input></app-message-input>
             </div>
         </div>
     `

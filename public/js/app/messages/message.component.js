@@ -34,7 +34,7 @@ MessageComponent = __decorate([
     Component({
         selector: 'app-message',
         templateUrl: './message.component.html',
-        styles: ["\n        .author {\n            display: inline-block;;\n            font-style: italic;\n            font-size: 12px;\n            width: 80%;\n        }\n        .config {\n            display: inline-block;\n            text-align: right;\n            font-size: 12px;\n            width: 19%;\n        }\n    "]
+        styles: ["\n        .author {\n            display: inline-block;;\n            font-style: italic;\n            font-size: 12px;\n            width: 80%;\n        }\n        .config {\n            display: inline-block;\n            text-align: right;\n            font-size: 12px;\n            width: 19%;\n        }\n        .panel {\n            width: 75%;\n        }\n        .my-message-body {\n            margin-left: 25%;\n        }\n    "]
     }),
     __metadata("design:paramtypes", [MessageService])
 ], MessageComponent);

@@ -88,6 +88,7 @@ var MessageModuleInjector = (function (_super) {
         return notFoundResult;
     };
     MessageModuleInjector.prototype.destroyInternal = function () {
+        (this.__MessageService_6 && this._MessageService_6.ngOnDestroy());
     };
     return MessageModuleInjector;
 }(import0.ɵNgModuleInjector));

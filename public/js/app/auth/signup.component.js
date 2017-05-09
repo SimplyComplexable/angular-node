@@ -17,6 +17,7 @@ var SignUpComponent = (function () {
     }
     SignUpComponent.prototype.ngOnInit = function () {
         this.myForm = new FormGroup({
+            username: new FormControl(null, Validators.required),
             firstName: new FormControl(null, Validators.required),
             lastName: new FormControl(null, Validators.required),
             email: new FormControl(null, [
@@ -27,7 +28,7 @@ var SignUpComponent = (function () {
         });
     };
     SignUpComponent.prototype.onSubmit = function () {
-        var user = new User(this.myForm.value.email, this.myForm.value.password, this.myForm.value.firstName, this.myForm.value.lastName);
+        var user = new User(this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.firstName, this.myForm.value.lastName);
         this.authService.signUp(user)
             .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
         this.myForm.reset();

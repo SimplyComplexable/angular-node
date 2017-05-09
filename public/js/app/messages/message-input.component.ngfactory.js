@@ -4,25 +4,31 @@
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride}
  */
 /* tslint:disable */
-import * as import0 from '@angular/core';
-import * as import1 from './message-input.component';
-import * as import2 from '@angular/forms';
-import * as import3 from './message.service';
-var styles_MessageInputComponent = [];
-export var RenderType_MessageInputComponent = import0.ɵcrt({
-    encapsulation: 2,
+import * as import0 from './message-input.component.css.shim.ngstyle';
+import * as import1 from '@angular/core';
+import * as import2 from './message-input.component';
+import * as import3 from '@angular/forms';
+import * as import4 from './message.service';
+var styles_MessageInputComponent = [import0.styles];
+export var RenderType_MessageInputComponent = import1.ɵcrt({
+    encapsulation: 0,
     styles: styles_MessageInputComponent,
     data: {}
 });
 export function View_MessageInputComponent_0(l) {
-    return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 29, 'div', [[
+    return import1.ɵvid(0, [
+        (l()(), import1.ɵeld(0, null, null, 29, 'div', [
+            [
                 'class',
                 'col-md-8 col-md-offset-2'
+            ],
+            [
+                'id',
+                'message-input-container'
             ]
         ], null, null, null, null, null)),
-        (l()(), import0.ɵted(null, ['\n    '])),
-        (l()(), import0.ɵeld(0, null, null, 26, 'form', [[
+        (l()(), import1.ɵted(null, ['\n    '])),
+        (l()(), import1.ɵeld(0, null, null, 26, 'form', [[
                 'novalidate',
                 ''
             ]
@@ -79,25 +85,25 @@ export function View_MessageInputComponent_0(l) {
             var ad = true;
             var co = v.component;
             if (('submit' === en)) {
-                var pd_0 = (import0.ɵnov(v, 4).onSubmit($event) !== false);
+                var pd_0 = (import1.ɵnov(v, 4).onSubmit($event) !== false);
                 ad = (pd_0 && ad);
             }
             if (('reset' === en)) {
-                var pd_1 = (import0.ɵnov(v, 4).onReset() !== false);
+                var pd_1 = (import1.ɵnov(v, 4).onReset() !== false);
                 ad = (pd_1 && ad);
             }
             if (('ngSubmit' === en)) {
-                var pd_2 = (co.onSubmit(import0.ɵnov(v, 4)) !== false);
+                var pd_2 = (co.onSubmit(import1.ɵnov(v, 4)) !== false);
                 ad = (pd_2 && ad);
             }
             return ad;
         }, null, null)),
-        import0.ɵdid(8192, null, 0, import2.ɵbf, [], null, null),
-        import0.ɵdid(8192, [[
+        import1.ɵdid(8192, null, 0, import3.ɵbf, [], null, null),
+        import1.ɵdid(8192, [[
                 'f',
                 4
             ]
-        ], 0, import2.NgForm, [
+        ], 0, import3.NgForm, [
             [
                 8,
                 null
@@ -107,23 +113,23 @@ export function View_MessageInputComponent_0(l) {
                 null
             ]
         ], null, { ngSubmit: 'ngSubmit' }),
-        import0.ɵprd(1024, null, import2.ControlContainer, null, [import2.NgForm]),
-        import0.ɵdid(8192, null, 0, import2.NgControlStatusGroup, [import2.ControlContainer], null, null),
-        (l()(), import0.ɵted(null, ['\n        '])),
-        (l()(), import0.ɵeld(0, null, null, 13, 'div', [[
+        import1.ɵprd(1024, null, import3.ControlContainer, null, [import3.NgForm]),
+        import1.ɵdid(8192, null, 0, import3.NgControlStatusGroup, [import3.ControlContainer], null, null),
+        (l()(), import1.ɵted(null, ['\n        '])),
+        (l()(), import1.ɵeld(0, null, null, 13, 'div', [[
                 'class',
                 'form-group'
             ]
         ], null, null, null, null, null)),
-        (l()(), import0.ɵted(null, ['\n            '])),
-        (l()(), import0.ɵeld(0, null, null, 1, 'label', [[
+        (l()(), import1.ɵted(null, ['\n            '])),
+        (l()(), import1.ɵeld(0, null, null, 1, 'label', [[
                 'for',
                 'content'
             ]
         ], null, null, null, null, null)),
-        (l()(), import0.ɵted(null, ['Content'])),
-        (l()(), import0.ɵted(null, ['\n            '])),
-        (l()(), import0.ɵeld(0, null, null, 7, 'input', [
+        (l()(), import1.ɵted(null, ['Enter a Message:'])),
+        (l()(), import1.ɵted(null, ['\n            '])),
+        (l()(), import1.ɵeld(0, null, null, 7, 'input', [
             [
                 'class',
                 'form-control'
@@ -205,50 +211,50 @@ export function View_MessageInputComponent_0(l) {
         ], function (v, en, $event) {
             var ad = true;
             if (('input' === en)) {
-                var pd_0 = (import0.ɵnov(v, 14)._handleInput($event.target.value) !== false);
+                var pd_0 = (import1.ɵnov(v, 14)._handleInput($event.target.value) !== false);
                 ad = (pd_0 && ad);
             }
             if (('blur' === en)) {
-                var pd_1 = (import0.ɵnov(v, 14).onTouched() !== false);
+                var pd_1 = (import1.ɵnov(v, 14).onTouched() !== false);
                 ad = (pd_1 && ad);
             }
             if (('compositionstart' === en)) {
-                var pd_2 = (import0.ɵnov(v, 14)._compositionStart() !== false);
+                var pd_2 = (import1.ɵnov(v, 14)._compositionStart() !== false);
                 ad = (pd_2 && ad);
             }
             if (('compositionend' === en)) {
-                var pd_3 = (import0.ɵnov(v, 14)._compositionEnd($event.target.value) !== false);
+                var pd_3 = (import1.ɵnov(v, 14)._compositionEnd($event.target.value) !== false);
                 ad = (pd_3 && ad);
             }
             return ad;
         }, null, null)),
-        import0.ɵdid(8192, null, 0, import2.DefaultValueAccessor, [
-            import0.Renderer,
-            import0.ElementRef,
+        import1.ɵdid(8192, null, 0, import3.DefaultValueAccessor, [
+            import1.Renderer,
+            import1.ElementRef,
             [
                 2,
-                import2.COMPOSITION_BUFFER_MODE
+                import3.COMPOSITION_BUFFER_MODE
             ]
         ], null, null),
-        import0.ɵdid(8192, null, 0, import2.RequiredValidator, [], { required: [
+        import1.ɵdid(8192, null, 0, import3.RequiredValidator, [], { required: [
                 0,
                 'required'
             ]
         }, null),
-        import0.ɵprd(512, null, import2.NG_VALIDATORS, function (p0_0) {
+        import1.ɵprd(512, null, import3.NG_VALIDATORS, function (p0_0) {
             return [p0_0];
-        }, [import2.RequiredValidator]),
-        import0.ɵprd(512, null, import2.NG_VALUE_ACCESSOR, function (p0_0) {
+        }, [import3.RequiredValidator]),
+        import1.ɵprd(512, null, import3.NG_VALUE_ACCESSOR, function (p0_0) {
             return [p0_0];
-        }, [import2.DefaultValueAccessor]),
-        import0.ɵdid(335872, null, 0, import2.NgModel, [
+        }, [import3.DefaultValueAccessor]),
+        import1.ɵdid(335872, null, 0, import3.NgModel, [
             [
                 2,
-                import2.ControlContainer
+                import3.ControlContainer
             ],
             [
                 2,
-                import2.NG_VALIDATORS
+                import3.NG_VALIDATORS
             ],
             [
                 8,
@@ -256,7 +262,7 @@ export function View_MessageInputComponent_0(l) {
             ],
             [
                 2,
-                import2.NG_VALUE_ACCESSOR
+                import3.NG_VALUE_ACCESSOR
             ]
         ], {
             name: [
@@ -268,11 +274,11 @@ export function View_MessageInputComponent_0(l) {
                 'model'
             ]
         }, null),
-        import0.ɵprd(1024, null, import2.NgControl, null, [import2.NgModel]),
-        import0.ɵdid(8192, null, 0, import2.NgControlStatus, [import2.NgControl], null, null),
-        (l()(), import0.ɵted(null, ['\n        '])),
-        (l()(), import0.ɵted(null, ['\n        '])),
-        (l()(), import0.ɵeld(0, null, null, 1, 'button', [
+        import1.ɵprd(1024, null, import3.NgControl, null, [import3.NgModel]),
+        import1.ɵdid(8192, null, 0, import3.NgControlStatus, [import3.NgControl], null, null),
+        (l()(), import1.ɵted(null, ['\n        '])),
+        (l()(), import1.ɵted(null, ['\n        '])),
+        (l()(), import1.ɵeld(0, null, null, 1, 'button', [
             [
                 'class',
                 'btn btn-danger'
@@ -289,14 +295,14 @@ export function View_MessageInputComponent_0(l) {
             var ad = true;
             var co = v.component;
             if (('click' === en)) {
-                var pd_0 = (co.onClear(import0.ɵnov(v, 4)) !== false);
+                var pd_0 = (co.onClear(import1.ɵnov(v, 4)) !== false);
                 ad = (pd_0 && ad);
             }
             return ad;
         }, null, null)),
-        (l()(), import0.ɵted(null, ['Clear'])),
-        (l()(), import0.ɵted(null, ['\n        '])),
-        (l()(), import0.ɵeld(0, null, null, 1, 'button', [
+        (l()(), import1.ɵted(null, ['Clear'])),
+        (l()(), import1.ɵted(null, ['\n        '])),
+        (l()(), import1.ɵeld(0, null, null, 1, 'button', [
             [
                 'class',
                 'btn btn-primary'
@@ -311,9 +317,9 @@ export function View_MessageInputComponent_0(l) {
                 0
             ]
         ], null, null, null, null)),
-        (l()(), import0.ɵted(null, ['Save'])),
-        (l()(), import0.ɵted(null, ['\n    '])),
-        (l()(), import0.ɵted(null, ['\n']))
+        (l()(), import1.ɵted(null, ['Save'])),
+        (l()(), import1.ɵted(null, ['\n    '])),
+        (l()(), import1.ɵted(null, ['\n']))
     ], function (ck, v) {
         var co = v.component;
         var currVal_15 = 'required';
@@ -322,33 +328,33 @@ export function View_MessageInputComponent_0(l) {
         var currVal_17 = ((co.message == null) ? null : co.message.content);
         ck(v, 18, 0, currVal_16, currVal_17);
     }, function (ck, v) {
-        var currVal_0 = import0.ɵnov(v, 6).ngClassUntouched;
-        var currVal_1 = import0.ɵnov(v, 6).ngClassTouched;
-        var currVal_2 = import0.ɵnov(v, 6).ngClassPristine;
-        var currVal_3 = import0.ɵnov(v, 6).ngClassDirty;
-        var currVal_4 = import0.ɵnov(v, 6).ngClassValid;
-        var currVal_5 = import0.ɵnov(v, 6).ngClassInvalid;
-        var currVal_6 = import0.ɵnov(v, 6).ngClassPending;
+        var currVal_0 = import1.ɵnov(v, 6).ngClassUntouched;
+        var currVal_1 = import1.ɵnov(v, 6).ngClassTouched;
+        var currVal_2 = import1.ɵnov(v, 6).ngClassPristine;
+        var currVal_3 = import1.ɵnov(v, 6).ngClassDirty;
+        var currVal_4 = import1.ɵnov(v, 6).ngClassValid;
+        var currVal_5 = import1.ɵnov(v, 6).ngClassInvalid;
+        var currVal_6 = import1.ɵnov(v, 6).ngClassPending;
         ck(v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6);
-        var currVal_7 = (import0.ɵnov(v, 15).required ? '' : null);
-        var currVal_8 = import0.ɵnov(v, 20).ngClassUntouched;
-        var currVal_9 = import0.ɵnov(v, 20).ngClassTouched;
-        var currVal_10 = import0.ɵnov(v, 20).ngClassPristine;
-        var currVal_11 = import0.ɵnov(v, 20).ngClassDirty;
-        var currVal_12 = import0.ɵnov(v, 20).ngClassValid;
-        var currVal_13 = import0.ɵnov(v, 20).ngClassInvalid;
-        var currVal_14 = import0.ɵnov(v, 20).ngClassPending;
+        var currVal_7 = (import1.ɵnov(v, 15).required ? '' : null);
+        var currVal_8 = import1.ɵnov(v, 20).ngClassUntouched;
+        var currVal_9 = import1.ɵnov(v, 20).ngClassTouched;
+        var currVal_10 = import1.ɵnov(v, 20).ngClassPristine;
+        var currVal_11 = import1.ɵnov(v, 20).ngClassDirty;
+        var currVal_12 = import1.ɵnov(v, 20).ngClassValid;
+        var currVal_13 = import1.ɵnov(v, 20).ngClassInvalid;
+        var currVal_14 = import1.ɵnov(v, 20).ngClassPending;
         ck(v, 13, 0, currVal_7, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14);
-        var currVal_18 = !import0.ɵnov(v, 4).valid;
+        var currVal_18 = !import1.ɵnov(v, 4).valid;
         ck(v, 26, 0, currVal_18);
     });
 }
 function View_MessageInputComponent_Host_0(l) {
-    return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 1, 'app-message-input', [], null, null, null, View_MessageInputComponent_0, RenderType_MessageInputComponent)),
-        import0.ɵdid(57344, null, 0, import1.MessageInputComponent, [import3.MessageService], null, null)
+    return import1.ɵvid(0, [
+        (l()(), import1.ɵeld(0, null, null, 1, 'app-message-input', [], null, null, null, View_MessageInputComponent_0, RenderType_MessageInputComponent)),
+        import1.ɵdid(57344, null, 0, import2.MessageInputComponent, [import4.MessageService], null, null)
     ], function (ck, v) {
         ck(v, 1, 0);
     }, null);
 }
-export var MessageInputComponentNgFactory = import0.ɵccf('app-message-input', import1.MessageInputComponent, View_MessageInputComponent_Host_0, {}, {}, []);
+export var MessageInputComponentNgFactory = import1.ɵccf('app-message-input', import2.MessageInputComponent, View_MessageInputComponent_Host_0, {}, {}, []);

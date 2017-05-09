@@ -16,13 +16,13 @@ export var RenderType_SignUpComponent = import0.ɵcrt({
 });
 export function View_SignUpComponent_0(l) {
     return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 63, 'div', [[
+        (l()(), import0.ɵeld(0, null, null, 76, 'div', [[
                 'class',
                 'col-md-8 col-md-offset-2'
             ]
         ], null, null, null, null, null)),
         (l()(), import0.ɵted(null, ['\n    '])),
-        (l()(), import0.ɵeld(0, null, null, 60, 'form', [[
+        (l()(), import0.ɵeld(0, null, null, 73, 'form', [[
                 'novalidate',
                 ''
             ]
@@ -118,6 +118,146 @@ export function View_SignUpComponent_0(l) {
         (l()(), import0.ɵted(null, ['\n            '])),
         (l()(), import0.ɵeld(0, null, null, 1, 'label', [[
                 'for',
+                'username'
+            ]
+        ], null, null, null, null, null)),
+        (l()(), import0.ɵted(null, ['Username'])),
+        (l()(), import0.ɵted(null, ['\n            '])),
+        (l()(), import0.ɵeld(0, null, null, 5, 'input', [
+            [
+                'class',
+                'form-control'
+            ],
+            [
+                'formControlName',
+                'username'
+            ],
+            [
+                'id',
+                'username'
+            ],
+            [
+                'type',
+                'text'
+            ]
+        ], [
+            [
+                2,
+                'ng-untouched',
+                null
+            ],
+            [
+                2,
+                'ng-touched',
+                null
+            ],
+            [
+                2,
+                'ng-pristine',
+                null
+            ],
+            [
+                2,
+                'ng-dirty',
+                null
+            ],
+            [
+                2,
+                'ng-valid',
+                null
+            ],
+            [
+                2,
+                'ng-invalid',
+                null
+            ],
+            [
+                2,
+                'ng-pending',
+                null
+            ]
+        ], [
+            [
+                null,
+                'input'
+            ],
+            [
+                null,
+                'blur'
+            ],
+            [
+                null,
+                'compositionstart'
+            ],
+            [
+                null,
+                'compositionend'
+            ]
+        ], function (v, en, $event) {
+            var ad = true;
+            if (('input' === en)) {
+                var pd_0 = (import0.ɵnov(v, 14)._handleInput($event.target.value) !== false);
+                ad = (pd_0 && ad);
+            }
+            if (('blur' === en)) {
+                var pd_1 = (import0.ɵnov(v, 14).onTouched() !== false);
+                ad = (pd_1 && ad);
+            }
+            if (('compositionstart' === en)) {
+                var pd_2 = (import0.ɵnov(v, 14)._compositionStart() !== false);
+                ad = (pd_2 && ad);
+            }
+            if (('compositionend' === en)) {
+                var pd_3 = (import0.ɵnov(v, 14)._compositionEnd($event.target.value) !== false);
+                ad = (pd_3 && ad);
+            }
+            return ad;
+        }, null, null)),
+        import0.ɵdid(8192, null, 0, import2.DefaultValueAccessor, [
+            import0.Renderer,
+            import0.ElementRef,
+            [
+                2,
+                import2.COMPOSITION_BUFFER_MODE
+            ]
+        ], null, null),
+        import0.ɵprd(512, null, import2.NG_VALUE_ACCESSOR, function (p0_0) {
+            return [p0_0];
+        }, [import2.DefaultValueAccessor]),
+        import0.ɵdid(335872, null, 0, import2.FormControlName, [
+            [
+                3,
+                import2.ControlContainer
+            ],
+            [
+                8,
+                null
+            ],
+            [
+                8,
+                null
+            ],
+            [
+                2,
+                import2.NG_VALUE_ACCESSOR
+            ]
+        ], { name: [
+                0,
+                'name'
+            ]
+        }, null),
+        import0.ɵprd(1024, null, import2.NgControl, null, [import2.FormControlName]),
+        import0.ɵdid(8192, null, 0, import2.NgControlStatus, [import2.NgControl], null, null),
+        (l()(), import0.ɵted(null, ['\n        '])),
+        (l()(), import0.ɵted(null, ['\n        '])),
+        (l()(), import0.ɵeld(0, null, null, 11, 'div', [[
+                'class',
+                'form-group'
+            ]
+        ], null, null, null, null, null)),
+        (l()(), import0.ɵted(null, ['\n            '])),
+        (l()(), import0.ɵeld(0, null, null, 1, 'label', [[
+                'for',
                 'firstName'
             ]
         ], null, null, null, null, null)),
@@ -196,19 +336,19 @@ export function View_SignUpComponent_0(l) {
         ], function (v, en, $event) {
             var ad = true;
             if (('input' === en)) {
-                var pd_0 = (import0.ɵnov(v, 14)._handleInput($event.target.value) !== false);
+                var pd_0 = (import0.ɵnov(v, 27)._handleInput($event.target.value) !== false);
                 ad = (pd_0 && ad);
             }
             if (('blur' === en)) {
-                var pd_1 = (import0.ɵnov(v, 14).onTouched() !== false);
+                var pd_1 = (import0.ɵnov(v, 27).onTouched() !== false);
                 ad = (pd_1 && ad);
             }
             if (('compositionstart' === en)) {
-                var pd_2 = (import0.ɵnov(v, 14)._compositionStart() !== false);
+                var pd_2 = (import0.ɵnov(v, 27)._compositionStart() !== false);
                 ad = (pd_2 && ad);
             }
             if (('compositionend' === en)) {
-                var pd_3 = (import0.ɵnov(v, 14)._compositionEnd($event.target.value) !== false);
+                var pd_3 = (import0.ɵnov(v, 27)._compositionEnd($event.target.value) !== false);
                 ad = (pd_3 && ad);
             }
             return ad;
@@ -336,19 +476,19 @@ export function View_SignUpComponent_0(l) {
         ], function (v, en, $event) {
             var ad = true;
             if (('input' === en)) {
-                var pd_0 = (import0.ɵnov(v, 27)._handleInput($event.target.value) !== false);
+                var pd_0 = (import0.ɵnov(v, 40)._handleInput($event.target.value) !== false);
                 ad = (pd_0 && ad);
             }
             if (('blur' === en)) {
-                var pd_1 = (import0.ɵnov(v, 27).onTouched() !== false);
+                var pd_1 = (import0.ɵnov(v, 40).onTouched() !== false);
                 ad = (pd_1 && ad);
             }
             if (('compositionstart' === en)) {
-                var pd_2 = (import0.ɵnov(v, 27)._compositionStart() !== false);
+                var pd_2 = (import0.ɵnov(v, 40)._compositionStart() !== false);
                 ad = (pd_2 && ad);
             }
             if (('compositionend' === en)) {
-                var pd_3 = (import0.ɵnov(v, 27)._compositionEnd($event.target.value) !== false);
+                var pd_3 = (import0.ɵnov(v, 40)._compositionEnd($event.target.value) !== false);
                 ad = (pd_3 && ad);
             }
             return ad;
@@ -476,19 +616,19 @@ export function View_SignUpComponent_0(l) {
         ], function (v, en, $event) {
             var ad = true;
             if (('input' === en)) {
-                var pd_0 = (import0.ɵnov(v, 40)._handleInput($event.target.value) !== false);
+                var pd_0 = (import0.ɵnov(v, 53)._handleInput($event.target.value) !== false);
                 ad = (pd_0 && ad);
             }
             if (('blur' === en)) {
-                var pd_1 = (import0.ɵnov(v, 40).onTouched() !== false);
+                var pd_1 = (import0.ɵnov(v, 53).onTouched() !== false);
                 ad = (pd_1 && ad);
             }
             if (('compositionstart' === en)) {
-                var pd_2 = (import0.ɵnov(v, 40)._compositionStart() !== false);
+                var pd_2 = (import0.ɵnov(v, 53)._compositionStart() !== false);
                 ad = (pd_2 && ad);
             }
             if (('compositionend' === en)) {
-                var pd_3 = (import0.ɵnov(v, 40)._compositionEnd($event.target.value) !== false);
+                var pd_3 = (import0.ɵnov(v, 53)._compositionEnd($event.target.value) !== false);
                 ad = (pd_3 && ad);
             }
             return ad;
@@ -616,19 +756,19 @@ export function View_SignUpComponent_0(l) {
         ], function (v, en, $event) {
             var ad = true;
             if (('input' === en)) {
-                var pd_0 = (import0.ɵnov(v, 53)._handleInput($event.target.value) !== false);
+                var pd_0 = (import0.ɵnov(v, 66)._handleInput($event.target.value) !== false);
                 ad = (pd_0 && ad);
             }
             if (('blur' === en)) {
-                var pd_1 = (import0.ɵnov(v, 53).onTouched() !== false);
+                var pd_1 = (import0.ɵnov(v, 66).onTouched() !== false);
                 ad = (pd_1 && ad);
             }
             if (('compositionstart' === en)) {
-                var pd_2 = (import0.ɵnov(v, 53)._compositionStart() !== false);
+                var pd_2 = (import0.ɵnov(v, 66)._compositionStart() !== false);
                 ad = (pd_2 && ad);
             }
             if (('compositionend' === en)) {
-                var pd_3 = (import0.ɵnov(v, 53)._compositionEnd($event.target.value) !== false);
+                var pd_3 = (import0.ɵnov(v, 66)._compositionEnd($event.target.value) !== false);
                 ad = (pd_3 && ad);
             }
             return ad;
@@ -692,14 +832,16 @@ export function View_SignUpComponent_0(l) {
         var co = v.component;
         var currVal_7 = co.myForm;
         ck(v, 4, 0, currVal_7);
-        var currVal_15 = 'firstName';
+        var currVal_15 = 'username';
         ck(v, 16, 0, currVal_15);
-        var currVal_23 = 'lastName';
+        var currVal_23 = 'firstName';
         ck(v, 29, 0, currVal_23);
-        var currVal_31 = 'email';
+        var currVal_31 = 'lastName';
         ck(v, 42, 0, currVal_31);
-        var currVal_39 = 'password';
+        var currVal_39 = 'email';
         ck(v, 55, 0, currVal_39);
+        var currVal_47 = 'password';
+        ck(v, 68, 0, currVal_47);
     }, function (ck, v) {
         var co = v.component;
         var currVal_0 = import0.ɵnov(v, 6).ngClassUntouched;
@@ -742,8 +884,16 @@ export function View_SignUpComponent_0(l) {
         var currVal_37 = import0.ɵnov(v, 57).ngClassInvalid;
         var currVal_38 = import0.ɵnov(v, 57).ngClassPending;
         ck(v, 52, 0, currVal_32, currVal_33, currVal_34, currVal_35, currVal_36, currVal_37, currVal_38);
-        var currVal_40 = !co.myForm.valid;
-        ck(v, 60, 0, currVal_40);
+        var currVal_40 = import0.ɵnov(v, 70).ngClassUntouched;
+        var currVal_41 = import0.ɵnov(v, 70).ngClassTouched;
+        var currVal_42 = import0.ɵnov(v, 70).ngClassPristine;
+        var currVal_43 = import0.ɵnov(v, 70).ngClassDirty;
+        var currVal_44 = import0.ɵnov(v, 70).ngClassValid;
+        var currVal_45 = import0.ɵnov(v, 70).ngClassInvalid;
+        var currVal_46 = import0.ɵnov(v, 70).ngClassPending;
+        ck(v, 65, 0, currVal_40, currVal_41, currVal_42, currVal_43, currVal_44, currVal_45, currVal_46);
+        var currVal_48 = !co.myForm.valid;
+        ck(v, 73, 0, currVal_48);
     });
 }
 function View_SignUpComponent_Host_0(l) {

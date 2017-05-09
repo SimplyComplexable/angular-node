@@ -1,5 +1,6 @@
 var User = (function () {
-    function User(email, password, firstName, lastName) {
+    function User(username, email, password, firstName, lastName) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;

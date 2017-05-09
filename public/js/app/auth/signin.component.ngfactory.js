@@ -139,7 +139,7 @@ export function View_SignInComponent_0(l) {
             ],
             [
                 'type',
-                'email'
+                'text'
             ]
         ], [
             [

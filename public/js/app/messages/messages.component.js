@@ -13,7 +13,7 @@ var MessagesComponent = (function () {
 MessagesComponent = __decorate([
     Component({
         selector: 'app-messages',
-        template: "\n        <div class=\"container\">\n            <div class=\"row\">\n                <app-message-input></app-message-input>\n            </div>\n            <hr>\n            <div class=\"row\">\n                <app-message-list></app-message-list>\n            </div>\n        </div>\n    "
+        template: "\n        <div class=\"container\">\n            <div class=\"row\">\n                <app-message-list></app-message-list>\n            </div>\n            <hr>\n            <div class=\"row\">\n                <app-message-input></app-message-input>\n            </div>\n        </div>\n    "
     })
 ], MessagesComponent);
 export { MessagesComponent };

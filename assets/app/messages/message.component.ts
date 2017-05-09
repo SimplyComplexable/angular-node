@@ -18,6 +18,12 @@ import {MessageService} from "./message.service";
             font-size: 12px;
             width: 19%;
         }
+        .panel {
+            width: 75%;
+        }
+        .my-message-body {
+            margin-left: 25%;
+        }
     `]
 })
 

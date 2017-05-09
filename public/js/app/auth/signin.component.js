@@ -20,15 +20,14 @@ var SignInComponent = (function () {
     SignInComponent.prototype.ngOnInit = function () {
         this.myForm = new FormGroup({
             email: new FormControl(null, [
-                Validators.required,
-                Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+                Validators.required
             ]),
             password: new FormControl(null, Validators.required),
         });
     };
     SignInComponent.prototype.onSubmit = function () {
         var _this = this;
-        var user = new User(this.myForm.value.email, this.myForm.value.password);
+        var user = new User(this.myForm.value.username, this.myForm.value.email, this.myForm.value.password);
         this.authService.signIn(user)
             .subscribe(function (data) {
             localStorage.setItem('token', data.token);

@@ -11,6 +11,7 @@ import { LogOutComponent } from "./logout.component";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { authRouting } from "./auth.routing";
+import { AuthGuard } from "./auth-guard.service";
 var AuthModule = (function () {
     function AuthModule() {
     }
@@ -27,6 +28,9 @@ AuthModule = __decorate([
             CommonModule,
             ReactiveFormsModule,
             authRouting
+        ],
+        providers: [
+            AuthGuard
         ]
     })
 ], AuthModule);

@@ -5,7 +5,8 @@ import {NgForm} from "@angular/forms";
 
 @Component({
     selector: 'app-message-input',
-    templateUrl: './message-input.component.html'
+    templateUrl: './message-input.component.html',
+    styleUrls: ['./message-input.component.css']
 })
 
 export class MessageInputComponent implements OnInit {
@@ -41,6 +42,7 @@ export class MessageInputComponent implements OnInit {
                 );
         }
         form.resetForm();
+        this.messageService.scrollToBottom();
     }
 
     onClear(form: NgForm) {

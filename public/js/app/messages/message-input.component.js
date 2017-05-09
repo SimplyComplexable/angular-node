@@ -36,6 +36,7 @@ var MessageInputComponent = (function () {
                 .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
         }
         form.resetForm();
+        this.messageService.scrollToBottom();
     };
     MessageInputComponent.prototype.onClear = function (form) {
         this.message = null;
@@ -46,7 +47,8 @@ var MessageInputComponent = (function () {
 MessageInputComponent = __decorate([
     Component({
         selector: 'app-message-input',
-        templateUrl: './message-input.component.html'
+        templateUrl: './message-input.component.html',
+        styleUrls: ['./message-input.component.css']
     }),
     __metadata("design:paramtypes", [MessageService])
 ], MessageInputComponent);

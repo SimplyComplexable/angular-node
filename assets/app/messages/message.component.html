@@ -1,4 +1,4 @@
-<article class="panel panel-default">
+<article [class]="(belongsToUser() ? 'my-message-body ' : '') + 'panel panel-default'">
     <div class="panel-body">
         {{ message.content }}
     </div>

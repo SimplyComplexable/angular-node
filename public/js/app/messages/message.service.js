@@ -13,15 +13,48 @@ import { EventEmitter, Injectable } from "@angular/core";
 import 'rxjs/Rx';
 import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../error/error.service";
+import { Subject } from "rxjs/Subject";
 var MessageService = (function () {
-    // rootUrl: string = 'http://localhost:3000/';
     function MessageService(http, errorService) {
         this.http = http;
         this.errorService = errorService;
         this.messages = [];
+        this.ngUnsubscribe = new Subject();
         this.messageIsEdit = new EventEmitter();
-        this.rootUrl = 'https://nodeangular2-deployment.herokuapp.com/';
+        this.messageSubscription = new EventEmitter();
+        // rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
+        this.rootUrl = 'http://localhost:3000/';
     }
+    MessageService.prototype.ngOnDestroy = function () {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+    };
+    MessageService.prototype.messageServerCall = function () {
+        var _this = this;
+        this.subscription = this.http.get(this.rootUrl + 'message')
+            .map(function (response) {
+            var messages = response.json().obj;
+            var transformedMessages = [];
+            for (var _i = 0, messages_1 = messages; _i < messages_1.length; _i++) {
+                var message = messages_1[_i];
+                transformedMessages.push(new Message(message.content, message.user
+                    ? message.user.username
+                        ? message.user.username : message.user.firstName
+                    : 'Deleted', message._id, message.user ? message.user._id : 1));
+            }
+            _this.messageSubscription.emit(transformedMessages);
+            _this.messages = transformedMessages;
+            return transformedMessages;
+        })
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return Observable.throw(error.json());
+        });
+        this.subscription.subscribe();
+    };
+    MessageService.prototype.scrollToBottom = function () {
+        console.log(document.body.scrollHeight);
+    };
     MessageService.prototype.addMessage = function (message) {
         var _this = this;
         var body = JSON.stringify(message);
@@ -43,13 +76,20 @@ var MessageService = (function () {
     };
     MessageService.prototype.getMessages = function () {
         var _this = this;
+        //prevent http call if messages already downloaded
+        if (this.messages.length > 0) {
+            return new Observable(function (observer) { return observer.next(_this.messages); });
+        }
         return this.http.get(this.rootUrl + 'message')
             .map(function (response) {
             var messages = response.json().obj;
             var transformedMessages = [];
-            for (var _i = 0, messages_1 = messages; _i < messages_1.length; _i++) {
-                var message = messages_1[_i];
-                transformedMessages.push(new Message(message.content, message.user ? message.user.firstName : 'Deleted', message._id, message.user ? message.user._id : 1));
+            for (var _i = 0, messages_2 = messages; _i < messages_2.length; _i++) {
+                var message = messages_2[_i];
+                transformedMessages.push(new Message(message.content, message.user
+                    ? message.user.username
+                        ? message.user.username : message.user.firstName
+                    : 'Deleted', message._id, message.user ? message.user._id : 1));
             }
             _this.messages = transformedMessages;
             return transformedMessages;
@@ -58,6 +98,14 @@ var MessageService = (function () {
             _this.errorService.handleError(error.json());
             return Observable.throw(error.json());
         });
+    };
+    MessageService.prototype.subscribeToMessages = function () {
+        var _this = this;
+        this.messageServerCall();
+        setInterval(function () {
+            _this.messageServerCall();
+        }, 5000);
+        return this.messageSubscription;
     };
     MessageService.prototype.editMessage = function (message) {
         this.messageIsEdit.emit(message);

@@ -19,19 +19,21 @@ import * as import1 from './auth.module';
 import * as import2 from '@angular/common';
 import * as import3 from '@angular/forms';
 import * as import4 from '@angular/router';
-import * as import5 from './signup.component.ngfactory';
-import * as import6 from './signin.component.ngfactory';
-import * as import7 from './logout.component.ngfactory';
-import * as import8 from './signup.component';
-import * as import9 from './signin.component';
-import * as import10 from './logout.component';
+import * as import5 from './auth-guard.service';
+import * as import6 from './signup.component.ngfactory';
+import * as import7 from './signin.component.ngfactory';
+import * as import8 from './logout.component.ngfactory';
+import * as import9 from './auth.service';
+import * as import10 from './signup.component';
+import * as import11 from './signin.component';
+import * as import12 from './logout.component';
 var AuthModuleInjector = (function (_super) {
     __extends(AuthModuleInjector, _super);
     function AuthModuleInjector(parent) {
         return _super.call(this, parent, [
-            import5.SignUpComponentNgFactory,
-            import6.SignInComponentNgFactory,
-            import7.LogOutComponentNgFactory
+            import6.SignUpComponentNgFactory,
+            import7.SignInComponentNgFactory,
+            import8.LogOutComponentNgFactory
         ], []) || this;
     }
     Object.defineProperty(AuthModuleInjector.prototype, "_NgLocalization_5", {
@@ -64,6 +66,16 @@ var AuthModuleInjector = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AuthModuleInjector.prototype, "_AuthGuard_9", {
+        get: function () {
+            if ((this.__AuthGuard_9 == null)) {
+                (this.__AuthGuard_9 = new import5.AuthGuard(this.parent.get(import9.AuthService), this.parent.get(import4.Router)));
+            }
+            return this.__AuthGuard_9;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AuthModuleInjector.prototype.createInternal = function () {
         this._CommonModule_0 = new import2.CommonModule();
         this._ɵba_1 = new import3.ɵba();
@@ -78,15 +90,17 @@ var AuthModuleInjector = (function (_super) {
                 },
                 {
                     path: 'signup',
-                    component: import8.SignUpComponent
+                    component: import10.SignUpComponent,
+                    canActivate: [import5.AuthGuard]
                 },
                 {
                     path: 'signin',
-                    component: import9.SignInComponent
+                    component: import11.SignInComponent,
+                    canActivate: [import5.AuthGuard]
                 },
                 {
                     path: 'logout',
-                    component: import10.LogOutComponent
+                    component: import12.LogOutComponent
                 }
             ]
         ];
@@ -119,6 +133,9 @@ var AuthModuleInjector = (function (_super) {
         }
         if ((token === import4.ROUTES)) {
             return this._ROUTES_8;
+        }
+        if ((token === import5.AuthGuard)) {
+            return this._AuthGuard_9;
         }
         return notFoundResult;
     };
