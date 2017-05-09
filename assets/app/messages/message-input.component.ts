@@ -28,21 +28,18 @@ export class MessageInputComponent implements OnInit {
             //editing
             this.message.content = form.value.content;
             this.messageService.updateMessage(this.message)
-                .subscribe(
-                    result => console.log(result)
-                );
+                .subscribe();
             this.message = null;
         } else {
             //creating
             const message: Message = new Message(form.value.content, 'Zack');
             this.messageService.addMessage(message)
                 .subscribe(
-                    data => console.log(data),
+                    () => {},
                     error => console.error(error)
                 );
         }
         form.resetForm();
-        this.messageService.scrollToBottom();
     }
 
     onClear(form: NgForm) {

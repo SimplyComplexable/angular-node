@@ -4,13 +4,19 @@ import {Injectable} from "@angular/core";
 import 'rxjs/Rx';
 import {Observable} from "rxjs/Observable";
 import {ErrorService} from "../error/error.service";
+import {environment} from "../environments";
 
 @Injectable()
 export class AuthService {
-    rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
-    // rootUrl: string = 'http://localhost:3000/';
+    rootUrl: string;
 
-    constructor(private http: Http, private errorService: ErrorService) { }
+    constructor(private http: Http, private errorService: ErrorService) {
+        if (environment.prod) {
+            this.rootUrl = 'https://nodeangular2-deployment.herokuapp.com/';
+        } else {
+            this.rootUrl = 'http://localhost:3000/';
+        }
+    }
 
     signUp(user: User) {
         const body = JSON.stringify(user);

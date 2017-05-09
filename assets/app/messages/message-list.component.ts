@@ -27,7 +27,8 @@ export class MessageListComponent implements OnInit, AfterViewChecked {
 
     ngOnInit() {
         this.scrollToBottom();
-        this.messageService.subscribeToMessages()
+        this.messageService.getMessages()
+        // this.messageService.subscribeToMessages()
             .subscribe(
                 (messages: Message[]) => {
                     this.messages = messages;

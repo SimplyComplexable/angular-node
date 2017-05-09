@@ -5,20 +5,26 @@ import 'rxjs/Rx';
 import {Observable} from "rxjs/Observable";
 import {ErrorService} from "../error/error.service";
 import {Subject} from "rxjs/Subject";
+import {environment} from "../environments";
 
 @Injectable()
 
 export class MessageService implements OnDestroy {
     private messages: Message[] = [];
     private ngUnsubscribe: Subject<void> = new Subject<void>();
+    private refreshRate = 3000; //ms
     messageIsEdit = new EventEmitter<Message>();
     messageSubscription = new EventEmitter<Message[]>();
     subscription;
+    rootUrl: string;
 
-    rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
-    // rootUrl: string = 'http://localhost:3000/';
-
-    constructor(private http: Http, private errorService: ErrorService) {}
+    constructor(private http: Http, private errorService: ErrorService) {
+        if (environment.prod) {
+            this.rootUrl = 'https://nodeangular2-deployment.herokuapp.com/';
+        } else {
+            this.rootUrl = 'http://localhost:3000/';
+        }
+    }
 
     ngOnDestroy() {
         this.ngUnsubscribe.next();
@@ -53,12 +59,7 @@ export class MessageService implements OnDestroy {
                 return Observable.throw(error.json());
             });
 
-        this.subscription.subscribe();
-    }
-
-    scrollToBottom() {
-        console.log(document.body.scrollHeight);
-
+        return this.subscription;
     }
 
     addMessage(message: Message) {
@@ -112,10 +113,12 @@ export class MessageService implements OnDestroy {
     }
 
     subscribeToMessages() {
-        this.messageServerCall();
+        this.messageServerCall()
+            .subscribe();
         setInterval(() => {
             this.messageServerCall()
-        }, 5000);
+                .subscribe();
+        }, this.refreshRate);
         return this.messageSubscription;
     }
 

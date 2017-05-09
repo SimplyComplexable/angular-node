@@ -10,15 +10,18 @@ var appRoutes = require('./routes/app');
 var messageRoutes = require('./routes/messages');
 var userRoutes = require('./routes/user');
 
+var environment = require('./environment');
+
 var app = express();
 
 //connect to db through mongoose
-
-//local
-// mongoose.connect('localhost:27017/node-angular');
+if (environment.prod) {
+    mongoose.connect('test-user:test-password@ds131621.mlab.com:31621/angular2-deployment');
+} else {
+    mongoose.connect('localhost:27017/node-angular');
+}
 
 //production
-mongoose.connect('test-user:test-password@ds131621.mlab.com:31621/angular2-deployment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

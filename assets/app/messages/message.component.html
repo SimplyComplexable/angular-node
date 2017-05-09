@@ -3,7 +3,7 @@
         {{ message.content }}
     </div>
     <footer class="panel-footer">
-        <div class="author">
+        <div class="author" *ngIf="!belongsToUser()">
             {{ message.username }}
         </div>
         <div class="config" *ngIf="belongsToUser()">

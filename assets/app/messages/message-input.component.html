@@ -1,13 +1,13 @@
-<div class="col-md-8 col-md-offset-2" id="message-input-container">
+<div id="message-input-container">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
-            <label for="content">Enter a Message:</label>
             <input
                     name="content"
                     type="text"
                     id="content"
                     class="form-control"
                     required="required"
+                    placeholder="Enter a message"
                     [ngModel]="message?.content">
         </div>
         <button class="btn btn-danger" type="button" (click)="onClear(f)">Clear</button>

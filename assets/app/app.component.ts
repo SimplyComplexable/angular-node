@@ -7,4 +7,5 @@ import {MessageService} from "./messages/message.service";
     templateUrl: './app.component.html'
 })
 export class AppComponent {
+
 }
