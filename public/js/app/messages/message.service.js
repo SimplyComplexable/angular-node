@@ -15,6 +15,7 @@ import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../error/error.service";
 import { Subject } from "rxjs/Subject";
 var MessageService = (function () {
+    // rootUrl: string = 'http://localhost:3000/';
     function MessageService(http, errorService) {
         this.http = http;
         this.errorService = errorService;
@@ -22,8 +23,7 @@ var MessageService = (function () {
         this.ngUnsubscribe = new Subject();
         this.messageIsEdit = new EventEmitter();
         this.messageSubscription = new EventEmitter();
-        // rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
-        this.rootUrl = 'http://localhost:3000/';
+        this.rootUrl = 'https://nodeangular2-deployment.herokuapp.com/';
     }
     MessageService.prototype.ngOnDestroy = function () {
         this.ngUnsubscribe.next();
