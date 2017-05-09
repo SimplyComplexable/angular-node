@@ -15,10 +15,10 @@ var app = express();
 //connect to db through mongoose
 
 //local
-mongoose.connect('localhost:27017/node-angular');
+// mongoose.connect('localhost:27017/node-angular');
 
 //production
-// mongoose.connect('test-user:test-password@ds131621.mlab.com:31621/angular2-deployment');
+mongoose.connect('test-user:test-password@ds131621.mlab.com:31621/angular2-deployment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -13,11 +13,11 @@ import 'rxjs/Rx';
 import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../error/error.service";
 var AuthService = (function () {
+    // rootUrl: string = 'http://localhost:3000/';
     function AuthService(http, errorService) {
         this.http = http;
         this.errorService = errorService;
-        // rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
-        this.rootUrl = 'http://localhost:3000/';
+        this.rootUrl = 'https://nodeangular2-deployment.herokuapp.com/';
     }
     AuthService.prototype.signUp = function (user) {
         var _this = this;
