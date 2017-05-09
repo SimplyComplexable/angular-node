@@ -15,8 +15,8 @@ export class MessageService implements OnDestroy {
     messageSubscription = new EventEmitter<Message[]>();
     subscription;
 
-    rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
-    // rootUrl: string = 'http://localhost:3000/';
+    // rootUrl: string = 'https://nodeangular2-deployment.herokuapp.com/';
+    rootUrl: string = 'http://localhost:3000/';
 
     constructor(private http: Http, private errorService: ErrorService) {}
 
