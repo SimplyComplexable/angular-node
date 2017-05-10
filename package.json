@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "copy environment.dev.js environment.js  /Y && copy assets/app/environment.dev.js assets/app/environment.js  /Y && del-cli public/js/app && webpack --config webpack.config.dev.js --progress --profile --watch",
-    "build:prod": "copy environment.prod.js environment.js  /Y && copy assets/app/environment.prod.js assets/app/environment.js  /Y && del-cli public/js/app && ngc -p tsconfig.aot.json && ngc -p tsconfig.aot.json && webpack --config webpack.config.prod.js --progress --profile --bail && del-cli 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts' 'assets/app/**/*.ngsummary.json' 'assets/app/**/*.ngstyle.ts' && git add public"
+    "build": "copy environment.dev.js environment.js  /Y && cd assets/app/ && copy environment.dev.ts environment.ts /Y && cd ../.. && del-cli public/js/app && webpack --config webpack.config.dev.js --progress --profile --watch",
+    "build:prod": "copy environment.prod.js environment.js  /Y && cd assets/app/ && copy environment.prod.ts environment.ts /Y && cd ../.. && del-cli public/js/app && ngc -p tsconfig.aot.json && ngc -p tsconfig.aot.json && webpack --config webpack.config.prod.js --progress --profile --bail && del-cli 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts' 'assets/app/**/*.ngsummary.json' 'assets/app/**/*.ngstyle.ts' && git add public"
   },
   "dependencies": {
     "@angular/animations": "^4.0.0",

@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 import 'rxjs/Rx';
 import {Observable} from "rxjs/Observable";
 import {ErrorService} from "../error/error.service";
-import {environment} from "../environments";
+import {environment} from "../environment";
 
 @Injectable()
 export class AuthService {
