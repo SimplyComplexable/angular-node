@@ -11,6 +11,9 @@ import {environment} from "../environment";
 
 export class MessageService implements OnDestroy {
     private messages: Message[] = [];
+    private threads: string[] = [];
+    private interval;
+    private lastMessageGet: number;
     private ngUnsubscribe: Subject<void> = new Subject<void>();
     private refreshRate = 3000; //ms
     messageIsEdit = new EventEmitter<Message>();
@@ -31,10 +34,13 @@ export class MessageService implements OnDestroy {
         this.ngUnsubscribe.complete();
     }
 
-    private messageServerCall() {
-
-        this.subscription = this.http.get(this.rootUrl + 'message')
+    private messageServerCall(thread: string) {
+        this.subscription = this.http.get(this.rootUrl + 'message' +
+            '?thread=' + thread + (this.lastMessageGet
+            ? '&date=' + this.lastMessageGet
+            : ''))
             .map((response: Response) => {
+                this.lastMessageGet = Date.now();
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
                 for (let message of messages) {
@@ -50,9 +56,15 @@ export class MessageService implements OnDestroy {
                         )
                     );
                 }
-                this.messageSubscription.emit(transformedMessages);
-                this.messages = transformedMessages;
-                return transformedMessages;
+
+                if (!this.messages.length) {
+                    this.messages = transformedMessages;
+                } else if (messages.length) {
+                    this.messages = this.messages.concat(transformedMessages);
+                }
+
+                this.messageSubscription.emit(this.messages);
+                return this.messages;
             })
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -81,12 +93,12 @@ export class MessageService implements OnDestroy {
             });
     }
 
-    getMessages() {
+    getMessages(thread: string) {
         //prevent http call if messages already downloaded
         if (this.messages.length > 0) {
             return new Observable(observer => observer.next(this.messages))
         }
-        return this.http.get(this.rootUrl + 'message')
+        return this.http.get(this.rootUrl + 'message?thread=' + thread)
             .map((response: Response) => {
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
@@ -112,11 +124,17 @@ export class MessageService implements OnDestroy {
             });
     }
 
-    subscribeToMessages() {
-        this.messageServerCall()
+    subscribeToMessages(thread: string) {
+        this.messageServerCall(thread)
             .subscribe();
-        setInterval(() => {
-            this.messageServerCall()
+
+        if (this.interval) {
+            window.clearInterval(this.interval);
+        }
+
+        //create interval and assign to class variable to destruction later
+        this.interval = setInterval(() => {
+            this.messageServerCall(thread)
                 .subscribe();
         }, this.refreshRate);
         return this.messageSubscription;
@@ -147,6 +165,21 @@ export class MessageService implements OnDestroy {
             : '';
         return this.http.delete(this.rootUrl + 'message/' + message.messageId + token)
             .map((response: Response) => response.json())
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
+    getThreads() {
+        const token = localStorage.getItem('token')
+            ?  '?token=' + localStorage.getItem('token')
+            : '';
+        return this.http.get(this.rootUrl + 'message/threads' + token)
+            .map((response: Response) => {
+                this.threads = response.json();
+                return this.threads;
+            })
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());

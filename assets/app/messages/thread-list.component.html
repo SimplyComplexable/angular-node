@@ -1,0 +1,6 @@
+<div class="container">
+    <ul>
+        <app-thread [thread]="'public'"></app-thread>
+        <app-thread *ngFor="let thread of threads" [thread]="thread"></app-thread>
+    </ul>
+</div>

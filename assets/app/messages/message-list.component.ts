@@ -1,11 +1,13 @@
-import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {AfterViewChecked, Component, ElementRef, HostListener, OnInit, ViewChild} from "@angular/core";
 import {Message} from "./message.model";
 import {MessageService} from "./message.service";
+import {ActivatedRoute, Params} from "@angular/router";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'app-message-list',
     template: `
-        <div class="col-md-8 col-md-offset-2" id="message-list-container" #scrollMe>
+        <div id="message-list-container" #scrollMe (scroll)="onScroll()">
             <app-message *ngFor="let message of messages"
                          [message]="message">
             </app-message>
@@ -15,25 +17,39 @@ import {MessageService} from "./message.service";
     styles: [`
         #message-list-container {
             padding-bottom: 100px;
+            overflow-y: auto;
+            height: 100vh;
         }
     `]
 })
 
 export class MessageListComponent implements OnInit, AfterViewChecked {
+    private currentThread: string = "public";
+    private messageSubscription;
+
     messages: Message[] = [];
     @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
-    constructor(private messageService: MessageService) {}
+    constructor(private messageService: MessageService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
-        this.scrollToBottom();
-        this.messageService.getMessages()
-        // this.messageService.subscribeToMessages()
+        this.activatedRoute.queryParams
             .subscribe(
-                (messages: Message[]) => {
-                    this.messages = messages;
+                (params: Params) => {
+                    if (params.thread) {
+                        if (this.messageSubscription) {
+                            this.messageSubscription.unsubscribe();
+                        }
+                        this.currentThread = params.thread;
+                        // this.messageService.getMessages()
+                        this.messageSubscription = this.messageService.subscribeToMessages(this.currentThread)
+                            .subscribe(
+                                (messages: Message[]) => this.messages = messages
+                            );
+                    }
                 }
             );
+        this.scrollToBottom();
     }
 
     ngAfterViewChecked() {
@@ -42,10 +58,11 @@ export class MessageListComponent implements OnInit, AfterViewChecked {
 
     scrollToBottom(): void {
         try {
-            document.body.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            // this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        } catch(err) { }
+    }
 
-        } catch(err) {
-            console.log('WTF');
-        }
+    onScroll() {
+        // console.log(this.myScrollContainer.nativeElement.scrollTop);
     }
 }

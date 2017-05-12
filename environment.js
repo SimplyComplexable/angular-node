@@ -1,3 +1,3 @@
 module.exports = environment = {
-    prod: true
+    prod: false
 };

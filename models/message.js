@@ -5,7 +5,13 @@ var User = require('./user');
 
 var schema = new Schema({
     content: {type: String, required: true},
-    user: {type: Schema.Types.ObjectId, ref: 'User'}
+    tags: {
+        thread: [String],
+        user: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+        privacy: { type: Boolean, default: false }
+    },
+    date: { type: Date, default: Date.now },
+    user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 schema.post('remove', function (message) {
