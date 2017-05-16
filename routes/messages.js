@@ -79,6 +79,10 @@ router.post('/', function(req, res, next) {
         const contentWords = content.split(' ');
         let threads = [];
 
+        if (req.query.thread) {
+            threads.push(req.query.thread);
+        }
+
         for (let word of contentWords) {
             if (word.startsWith('#')) {
                 threads.push(word.slice(1));

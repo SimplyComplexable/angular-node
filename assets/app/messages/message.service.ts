@@ -13,7 +13,7 @@ export class MessageService implements OnDestroy {
     private messages: Message[] = [];
     private threads: string[] = [];
     private interval;
-    private lastMessageGet: number;
+    private lastMessageGet: any = {};
     private ngUnsubscribe: Subject<void> = new Subject<void>();
     private refreshRate = 3000; //ms
     messageIsEdit = new EventEmitter<Message>();
@@ -35,12 +35,19 @@ export class MessageService implements OnDestroy {
     }
 
     private messageServerCall(thread: string) {
-        this.subscription = this.http.get(this.rootUrl + 'message' +
-            '?thread=' + thread + (this.lastMessageGet
-            ? '&date=' + this.lastMessageGet
-            : ''))
+        let queryParams = '?thread=' + thread;
+        if (this.lastMessageGet.date && this.lastMessageGet.thread === thread) {
+            //append date parameter to prevent duplicate messages
+            queryParams += '&date=' + this.lastMessageGet.date;
+        } else {
+            //update thread for future comparison
+            this.lastMessageGet.thread = thread;
+            //clear messages as new thread was selected
+            this.messages = [];
+        }
+        this.subscription = this.http.get(this.rootUrl + 'message' + queryParams)
             .map((response: Response) => {
-                this.lastMessageGet = Date.now();
+                this.lastMessageGet.date = Date.now();
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
                 for (let message of messages) {
@@ -74,25 +81,6 @@ export class MessageService implements OnDestroy {
         return this.subscription;
     }
 
-    addMessage(message: Message) {
-        const body = JSON.stringify(message);
-        const headers = new Headers({'Content-Type': 'application/json'});
-        const token = localStorage.getItem('token')
-            ?  '?token=' + localStorage.getItem('token')
-            : '';
-        return this.http.post(this.rootUrl + 'message' + token, body, { headers })
-            .map((response: Response) => {
-                const result = response.json();
-                const message =  new Message(result.obj.content, result.obj.user.firstName, result.obj._id, result.obj.user._id);
-                this.messages.push(message);
-                return message;
-            })
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
-            });
-    }
-
     getMessages(thread: string) {
         //prevent http call if messages already downloaded
         if (this.messages.length > 0) {
@@ -124,15 +112,41 @@ export class MessageService implements OnDestroy {
             });
     }
 
+    addMessage(message: Message) {
+        const body = JSON.stringify(message);
+        const headers = new Headers({'Content-Type': 'application/json'});
+
+        if (localStorage.getItem('token')) {
+            let queryParams = '?token=' + localStorage.getItem('token');
+            if (this.lastMessageGet.thread) {
+                queryParams += '&thread=' + this.lastMessageGet.thread;
+            }
+        } else {
+            let queryParams = '';
+        }
+        return this.http.post(this.rootUrl + 'message' + queryParams, body, { headers })
+            .map((response: Response) => {
+                const result = response.json();
+                const message =  new Message(result.obj.content, result.obj.user.firstName, result.obj._id, result.obj.user._id);
+                this.messages.push(message);
+                return message;
+            })
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
     subscribeToMessages(thread: string) {
         this.messageServerCall(thread)
             .subscribe();
 
         if (this.interval) {
+            console.log(this.interval);
             window.clearInterval(this.interval);
         }
 
-        //create interval and assign to class variable to destruction later
+        //create interval and assign to class variable for destruction later
         this.interval = setInterval(() => {
             this.messageServerCall(thread)
                 .subscribe();

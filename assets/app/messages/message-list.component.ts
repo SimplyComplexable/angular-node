@@ -16,9 +16,9 @@ import {Observable} from "rxjs/Observable";
     `,
     styles: [`
         #message-list-container {
-            padding-bottom: 100px;
+            margin-bottom: 150px;
             overflow-y: auto;
-            height: 100vh;
+            height: calc(100vh - 150px);
         }
     `]
 })
@@ -26,6 +26,7 @@ import {Observable} from "rxjs/Observable";
 export class MessageListComponent implements OnInit, AfterViewChecked {
     private currentThread: string = "public";
     private messageSubscription;
+    private shouldScroll: boolean = true;
 
     messages: Message[] = [];
     @ViewChild('scrollMe') private myScrollContainer: ElementRef;
@@ -53,16 +54,25 @@ export class MessageListComponent implements OnInit, AfterViewChecked {
     }
 
     ngAfterViewChecked() {
-        this.scrollToBottom();
+        if (this.shouldScroll) {
+            this.scrollToBottom();
+        }
     }
 
     scrollToBottom(): void {
         try {
-            // this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            if (this.myScrollContainer.nativeElement.scrollHeight - this.myScrollContainer.nativeElement.scrollTop
+                > this.myScrollContainer.nativeElement.clientHeight) {
+                this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            }
         } catch(err) { }
     }
 
     onScroll() {
-        // console.log(this.myScrollContainer.nativeElement.scrollTop);
+        if (this.myScrollContainer.nativeElement.scrollHeight - this.myScrollContainer.nativeElement.scrollTop
+            <= this.myScrollContainer.nativeElement.clientHeight) {
+            return this.shouldScroll = true;
+        }
+        this.shouldScroll = false;
     }
 }
