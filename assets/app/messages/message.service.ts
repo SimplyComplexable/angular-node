@@ -115,14 +115,14 @@ export class MessageService implements OnDestroy {
     addMessage(message: Message) {
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
-
+        let queryParams = '';
         if (localStorage.getItem('token')) {
-            let queryParams = '?token=' + localStorage.getItem('token');
+            queryParams = '?token=' + localStorage.getItem('token');
             if (this.lastMessageGet.thread) {
                 queryParams += '&thread=' + this.lastMessageGet.thread;
             }
         } else {
-            let queryParams = '';
+            queryParams = '';
         }
         return this.http.post(this.rootUrl + 'message' + queryParams, body, { headers })
             .map((response: Response) => {
